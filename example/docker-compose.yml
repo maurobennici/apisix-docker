@@ -23,6 +23,7 @@ services:
     restart: always
     volumes:
     - ./dashboard_conf/conf.yaml:/usr/local/apisix-dashboard/conf/conf.yaml
+    - ./dashboard_conf/schema.json:/usr/local/apisix-dashboard/conf/schema.json
     ports:
     - "9000:9000"
     networks:
@@ -33,6 +34,7 @@ services:
     restart: always
     volumes:
       - ./apisix_conf/config.yaml:/usr/local/apisix/conf/config.yaml:ro
+      - ./custom-plugins:/opt/apisix/plugins:ro
     depends_on:
       - etcd
     ##network_mode: host

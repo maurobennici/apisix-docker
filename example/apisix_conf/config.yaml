@@ -16,6 +16,8 @@
 #
 
 apisix:
+  extra_lua_path: "/opt/?.lua"
+
   node_listen: 9080              # APISIX listening port
   enable_ipv6: false
 
@@ -43,6 +45,9 @@ deployment:
       - "http://etcd:2379"          # multiple etcd address
     prefix: "/apisix"               # apisix configurations prefix
     timeout: 30                     # 30 seconds
+
+plugins:       
+  - file-proxy 
 
 plugin_attr:
   prometheus:
